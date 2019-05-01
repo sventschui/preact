@@ -102,7 +102,7 @@ let q = [];
  * Asynchronously schedule a callback
  * @type {(cb) => void}
  */
-options.debounceRendering = typeof Promise=='function' ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout;
+const defer = typeof Promise=='function' ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout;
 
 /*
  * The value of `Component.debounce` must asynchronously invoke the passed in callback. It is
@@ -119,7 +119,7 @@ options.debounceRendering = typeof Promise=='function' ? Promise.prototype.then.
  */
 export function enqueueRender(c) {
 	if (!c._dirty && (c._dirty = true) && q.push(c) === 1) {
-		options.debounceRendering(process);
+		(options.debounceRendering || defer)(process);
 	}
 }
 

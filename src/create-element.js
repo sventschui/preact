@@ -85,8 +85,8 @@ export /* istanbul ignore next */ function Fragment() { }
  * @returns {import('./internal').VNode | null}
  */
 export function coerceToVNode(possibleVNode) {
-	if (possibleVNode == null || typeof possibleVNode === 'boolean') return null;
-	if (typeof possibleVNode === 'string' || typeof possibleVNode === 'number') {
+	if (possibleVNode == null || typeof possibleVNode == 'boolean') return null;
+	if (typeof possibleVNode === 'string' || typeof possibleVNode == 'number') {
 		return createVNode(null, null, possibleVNode, null, null);
 	}
 
