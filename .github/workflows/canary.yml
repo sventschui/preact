@@ -21,6 +21,6 @@ jobs:
           ${{ runner.os }}-node-
     - name: install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
-      run: npm install
+      run: npm ci
     - name: build & test
       run: COVERAGE=true npm run test
