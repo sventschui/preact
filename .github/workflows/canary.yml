@@ -1,0 +1,19 @@
+name: Canary builds
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  canary:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@master
+    - name: install dependencies
+      run: npm install
+    - name: test
+      run: COVERAGE=true npm run test
+    - name: build
+      run: npm run build
