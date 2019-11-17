@@ -12,7 +12,6 @@ jobs:
     - name: checkout
       uses: actions/checkout@master
     - name: cache npm deps
-      id: cache
       uses: actions/cache@v1
       with:
         path: ~/.npm
@@ -20,7 +19,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
     - name: install dependencies
-      if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
     - name: build & test
       run: COVERAGE=true npm run test
