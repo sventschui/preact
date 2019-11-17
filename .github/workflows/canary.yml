@@ -13,7 +13,5 @@ jobs:
       uses: actions/checkout@master
     - name: install dependencies
       run: npm install
-    - name: test
+    - name: build & test
       run: COVERAGE=true npm run test
-    - name: build
-      run: npm run build
