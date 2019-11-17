@@ -19,6 +19,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
     - name: install dependencies
-      run: npm ci
+      run: npm install
     - name: build & test
       run: COVERAGE=true npm run test
